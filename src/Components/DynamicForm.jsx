@@ -55,6 +55,21 @@ const handleSubmitButton = (event) => {
         type:type,
         value:value
       }
+      case "checkbox":
+        return {
+          id:id,
+          label:labelName,
+          type:type,
+          value:value
+        }
+
+      case "radio":
+        return {
+          id:id,
+          label:labelName,
+          type:type,
+          value:value
+        }
    }
   })
 
