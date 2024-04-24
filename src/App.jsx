@@ -1,16 +1,23 @@
 import React from 'react'
 import Dropdown from './Components/Dropdown'
-import FormSelection from './Components/FormSelection'
-import FinalForm from './Components/FinalForm'
+import AddForm from './Components/AddForm'
+import { useSelector } from 'react-redux'
+import DynamicForm from './Components/DynamicForm'
 
 const App = () => {
+  const selectedForm = useSelector((store) => store.selectForm.selectedForm)
   return (
-    <div>
-      <h1 className='text-4xl text-center text-cyan-500'>React Dynamic Forms</h1>
+    <div className='m-5'>
+      <div>
+      <h1 className='text-4xl text-center text-cyan-500 font-bold mt-8 mb-4'>React Dynamic Forms</h1>
       <Dropdown/>
-      <FormSelection/>
-      <hr/>
-      <FinalForm/>
+      {selectedForm != "" && <AddForm/>}
+      </div>
+    <hr className='mt-4'/>
+      <div>
+        <DynamicForm/>
+      </div>
+      
     </div>
   )
 }

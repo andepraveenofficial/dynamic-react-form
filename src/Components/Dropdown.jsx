@@ -5,17 +5,17 @@ import { useDispatch } from 'react-redux'
 const Dropdown = () => {
     const dispatch = useDispatch()
   return (
-    <div>
-      <select className='text-2xl border p-3 m-2' onChange={(e)=>{dispatch(selectForm(e.target.value))}}>
-        <option  value="Select Form Type" defaultValue disabled>Select Form Type</option>
-        <option value="text">text</option>
-        <option value="number">number</option>
-        <option value="textarea">textarea</option>
-        <option value="dropdown">dropdown</option>
-        <option value="checkbox">checkbox</option>
-        <option value="radio">radio</option>
-      </select>
-    </div>
+    <div className="mt-4">
+    <select className='text-lg w-1/3 border rounded p-3 m-2 bg-gray-100 focus:outline-none focus:border-cyan-500' onChange={(e)=>{dispatch(selectForm(e.target.value))}}>
+      <option value={""} defaultValue>Select Form Type</option>
+      <option value="text">Text</option>
+      <option value="number">Number</option>
+      <option value="textarea">Textarea</option>
+      <option value="dropdown">Dropdown</option>
+      <option value="checkbox">Checkbox</option>
+      <option value="radio">Radio</option>
+    </select>
+  </div>
   )
 }
 

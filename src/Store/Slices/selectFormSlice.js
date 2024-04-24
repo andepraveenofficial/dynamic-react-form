@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 /* -----> Intial State <----- */
-const initialState = {selectedForm:null}
+const initialState = {selectedForm:""}
 
 const selectFormSlice = createSlice({
     name:"selectForm",
