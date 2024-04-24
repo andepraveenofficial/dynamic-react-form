@@ -23,6 +23,7 @@ export const InputBox = styled.input`
   border: 1px solid #e2e8f0;
   border-radius: 4px;
   outline: none;
+
 `;
 
 

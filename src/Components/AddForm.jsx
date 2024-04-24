@@ -5,7 +5,6 @@ import { addForm } from '../Store/Slices/finalFormSlice'
 import { v4 as uuidv4 } from 'uuid'
 import { selectForm } from '../Store/Slices/selectFormSlice'
 
-
 const AddForm = () => {
     const selectedForm = useSelector((store) => store.selectForm.selectedForm)
 
@@ -22,7 +21,7 @@ const AddForm = () => {
     // Methods 
 const handleAddOptionList = () => {
     
-    if (addOption){
+    if (addOption === ""){
         setMessageOptionName(false)
         setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption}])
         setAddOption("")
@@ -60,6 +59,7 @@ const handleAddFormButton = () => {
 
 
 const handleLabelNameChange = (e) => {
+
     setAddOption(e.target.value)
 }
 
@@ -68,9 +68,10 @@ const handleLabelNameChange = (e) => {
        <div className='flex flex-col gap-1 items-start m-4'>
         <Label>Add Options</Label>
         <Container>
-            <InputBox onChange={handleLabelNameChange} value={addOption}/>
+            <InputBox type="text" onChange={handleLabelNameChange} value={addOption}/>
             <Button onClick={handleAddOptionList}>Add a Option</Button>
         </Container>
+        
         {messageOptionName && <p class="text-red-500 font-bold">Option Name Cannot be blank</p>}
         
             <ul className='ml-7'>
