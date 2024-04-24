@@ -5,7 +5,7 @@ const Radio = (props) => {
     console.log(props)
     const {id, labelName, addOptionList} = props.fieldDetails
   return (
-    <div className="flex flex-col gap-3 items-start border border-gray-300 rounded p-2">
+    <div className="flex flex-col gap-3 items-start border border-gray-300 rounded p-2 w-1/3">
         <Label>{labelName}</Label>
         {addOptionList.map((each) => (
               <div key={each.id}>

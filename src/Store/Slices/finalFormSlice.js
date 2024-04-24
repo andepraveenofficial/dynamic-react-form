@@ -8,7 +8,7 @@ const finalFormSlice = createSlice({
     initialState,
     reducers:{
         addForm:(state, action) => {
-            console.log(action.payload)
+            
             state.push(action.payload);
         }
     }

@@ -7,7 +7,7 @@ const Textarea = (props) => {
   return (
     <div className='flex flex-col items-start'>
        <Label>{labelName}</Label>
-      <StyledTextArea/>
+      <StyledTextArea cols="80" required/>
     </div>
   )
 }

@@ -8,42 +8,64 @@ import { selectForm } from '../Store/Slices/selectFormSlice'
 
 const AddForm = () => {
     const selectedForm = useSelector((store) => store.selectForm.selectedForm)
-    console.log(selectedForm)
 
     // Local State
     const [labelName, setLabelName] = useState(null)
     const [addOption, setAddOption] = useState("")
     const [addOptionList, setAddOptionList] = useState([]) 
+    const [messageOptionName, setMessageOptionName] = useState(false)
+    const [messageLabelName, setMessageLabelName] = useState(false)
 
     // Global State
     const dispatch = useDispatch();
     
     // Methods 
 const handleAddOptionList = () => {
-    setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption}])
-    setAddOption("")
+    
+    if (addOption){
+        setMessageOptionName(false)
+        setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption}])
+        setAddOption(null)
+    }
+    else{
+        setMessageOptionName(true)
+    }
 }
 
 
 const handleAddFormButton = () => {
-    let selectFormObject = {
-        id:uuidv4(),
-        type:selectedForm,
-        labelName:labelName,
-        addOptionList:addOptionList
-    };
-
-    labelName &&  dispatch(addForm(selectFormObject))
-    dispatch(selectForm(""))
+    if (labelName){
+        setMessageLabelName(false)
+        let selectFormObject = {
+            id:uuidv4(),
+            type:selectedForm,
+            labelName:labelName,
+            addOptionList:addOptionList
+        };
+    
+        labelName &&  dispatch(addForm(selectFormObject))
+        dispatch(selectForm(""))
+    }
+    else{
+        setMessageLabelName(true)
+    }
 }
+
+
+const handleLabelNameChange = (e) => {
+    setAddOption(e.target.value)
+}
+
 
     const AddOption = () => (
        <div className='flex flex-col gap-1 items-start m-4'>
         <Label>Add Options</Label>
         <Container>
-            <InputBox onChange={(e) => setAddOption(e.target.value)} value={addOption} required/>
+            <InputBox onChange={handleLabelNameChange} value={addOption}/>
             <Button onClick={handleAddOptionList}>Add a Option</Button>
         </Container>
+        {messageOptionName && <p class="text-red-500 font-bold">Option Name Cannot be blank</p>}
+        
             <ul className='ml-7'>
                 {addOptionList.map((each) => 
                     <StyledListItem key={each.id}>{each.option}</StyledListItem>
@@ -68,7 +90,8 @@ const handleAddFormButton = () => {
     <div>
         <div className='flex flex-col gap-4 items-start'>
             <Label>Enter Label Name</Label>
-            <InputBox onChange={(e) => {setLabelName(e.target.value)}}></InputBox>
+            <InputBox onChange={(e) => {setLabelName(e.target.value)}} value={labelName}></InputBox>
+            {messageLabelName && <p className="text-red-500 font-bold">Option Name Cannot be blank</p>}
             { renderAddOption()}
             <Button onClick={handleAddFormButton}>Add to Form</Button>
         </div>

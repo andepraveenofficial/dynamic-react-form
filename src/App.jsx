@@ -6,6 +6,10 @@ import DynamicForm from './Components/DynamicForm'
 
 const App = () => {
   const selectedForm = useSelector((store) => store.selectForm.selectedForm)
+
+  // Global State 
+  const checkConsole = useSelector((state) => state.checkConsole)
+
   return (
     <div className='m-5'>
       <div>
@@ -18,6 +22,10 @@ const App = () => {
         <DynamicForm/>
       </div>
       
+      <div>
+        {checkConsole && <h1 className="text-red-500 font-bold">Check Console for Form Data</h1>}
+        
+      </div>
     </div>
   )
 }

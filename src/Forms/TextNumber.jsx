@@ -2,13 +2,11 @@ import React from 'react'
 import { InputBox, Label } from '../StyledComponents/FormElements'
 
 const TextNumber = (props) => {
-  
-    const {labelName, type} = props.fieldDetails 
-    console.log(labelName, type)
+  const {labelName, type} = props.fieldDetails 
   return (
-    <div>
+    <div className='flex gap-3 items-center'>
       <Label>{labelName}</Label>
-      <InputBox type={type}></InputBox>
+      <InputBox type={type} required></InputBox>
     </div>
   )
 }

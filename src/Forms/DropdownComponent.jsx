@@ -6,7 +6,7 @@ const DropdownComponent = (props) => {
     const {id, labelName, addOptionList} = props.fieldDetails
 
   return (
-    <div>
+    <div className='w-1/3'>
         <Label>{labelName}</Label>
         <select id={id}>
             {addOptionList.map((each) => (<option key={each.id} value={each.option}>{each.option}</option>))}
