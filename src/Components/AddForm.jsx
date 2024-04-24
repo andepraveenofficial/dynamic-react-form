@@ -10,7 +10,7 @@ const AddForm = () => {
     const selectedForm = useSelector((store) => store.selectForm.selectedForm)
 
     // Local State
-    const [labelName, setLabelName] = useState(null)
+    const [labelName, setLabelName] = useState("")
     const [addOption, setAddOption] = useState("")
     const [addOptionList, setAddOptionList] = useState([]) 
     const [messageOptionName, setMessageOptionName] = useState(false)
@@ -25,7 +25,7 @@ const handleAddOptionList = () => {
     if (addOption){
         setMessageOptionName(false)
         setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption}])
-        setAddOption(null)
+        setAddOption("")
     }
     else{
         setMessageOptionName(true)
@@ -40,11 +40,18 @@ const handleAddFormButton = () => {
             id:uuidv4(),
             type:selectedForm,
             labelName:labelName,
-            addOptionList:addOptionList
+            addOptionList:addOptionList, 
+            value:null
         };
     
-        labelName &&  dispatch(addForm(selectFormObject))
-        dispatch(selectForm(""))
+        if (labelName){
+            dispatch(addForm(selectFormObject))
+            dispatch(selectForm(""))
+        }  
+        else{
+                
+        }
+        
     }
     else{
         setMessageLabelName(true)
@@ -83,7 +90,7 @@ const handleLabelNameChange = (e) => {
             case "radio":
                 return <AddOption/>
             default:
-                return ""    
+                return null    
         }
     }
   return (

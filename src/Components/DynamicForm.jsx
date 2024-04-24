@@ -11,7 +11,6 @@ import { checkConsoleTrigger } from '../Store/Slices/checkConsoleSlice'
 
 const DynamicForm = () => {
     const finalFormList = useSelector((state) => state.finalForm)
-  const submitForm = useSelector((state) => state.submitForm);
     const dispatch = useDispatch()
 
   // Methods 
@@ -22,18 +21,51 @@ const handleSubmitButton = (event) => {
   }, 2000)
   dispatch(checkConsoleTrigger(true))
 
-  finalFormList.map((each) => {
-   console.log(each)
+  const consoleOutput = finalFormList.map((each) => {
+    const {id, labelName, type, value} = each
+   switch (type){
+    case "text":
+      return {
+        id:id,
+        label:labelName,
+        type:type,
+        value:value
+      }
+
+      case "number":
+      return {
+        id:id,
+        label:labelName,
+        type:type,
+        value:value
+      }
+
+      case "textarea":
+      return {
+        id:id,
+        label:labelName,
+        type:type,
+        value:value
+      }
+
+      case "dropdown":
+      return {
+        id:id,
+        label:labelName,
+        type:type,
+        value:value
+      }
+   }
   })
 
-  console.log(submitForm)
+  console.log(consoleOutput)
 }
 
   return (
     <div className='m-3'>
       <form onSubmit={handleSubmitButton} className='flex flex-col gap-4'>
       {finalFormList.map((each) => {
-        console.log(each)
+        
         switch (each.type){
             case "text":
                 return <TextNumber key={each.id} fieldDetails={each} />

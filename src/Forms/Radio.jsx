@@ -2,7 +2,7 @@ import React from 'react'
 import { Label } from '../StyledComponents/FormElements'
 
 const Radio = (props) => {
-    console.log(props)
+   
     const {id, labelName, addOptionList} = props.fieldDetails
   return (
     <div className="flex flex-col gap-3 items-start border border-gray-300 rounded p-2 w-1/3">
