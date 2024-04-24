@@ -4,6 +4,9 @@ import { useSelector } from 'react-redux'
 import TextNumber from '../Forms/TextNumber'
 import { Button } from '../StyledComponents/FormElements'
 import Textarea from '../Forms/Textarea'
+import DropdownComponent from '../Forms/DropdownComponent'
+import Checkbox from '../Forms/Checkbox'
+import Radio from '../Forms/Radio'
 
 const DynamicForm = () => {
     const finalFormList = useSelector((state) => state.finalForm)
@@ -18,7 +21,13 @@ const DynamicForm = () => {
             case "number":
                 return <TextNumber key={each.id} fieldDetails={each}/>    
             case "textarea":
-                return<Textarea key={each.id} fieldDetails={each}/>    
+                return<Textarea key={each.id} fieldDetails={each}/>  
+            case "dropdown":
+              return <DropdownComponent key={each.id} fieldDetails={each}/> 
+            case "checkbox":
+              return <Checkbox key={each.id} fieldDetails={each}/>   
+            case "radio":
+              return <Radio key={each.id} fieldDetails={each}/>      
         }
       })}
       

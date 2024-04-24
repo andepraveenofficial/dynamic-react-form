@@ -55,3 +55,10 @@ export const StyledTextArea = styled.textarea`
   resize: vertical; /* Allow vertical resizing */
 `;
 
+
+export const StyledListItem = styled.li`
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+  list-style-type: disc;
+`;
