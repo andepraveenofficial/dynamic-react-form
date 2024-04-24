@@ -35,15 +35,13 @@ Don't write above100 lines of code.
     - App.js
     - App.jsx
     * Components
+        - AddForm.jsx
         - Dropdown.jsx
-        - FormSelection.jsx
-        - CreateForm.jsx
-        - FinalForm.jsx
+        - DynamicForm.jsx
     * Forms
-        - Text.jsx
-        - Number.jsx
+        - TextNumber.jsx
         - Textarea.jsx
-        - DropdownInput.jsx
+        - DropdownComponent.jsx
         - Checkbox.jsx
         - Radio.jsx
     * Store

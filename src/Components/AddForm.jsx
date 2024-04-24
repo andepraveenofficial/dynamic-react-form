@@ -19,6 +19,12 @@ const AddForm = () => {
     const dispatch = useDispatch();
     
     // Methods 
+const handleAddOptionList = () => {
+    setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption}])
+    setAddOption("")
+}
+
+
 const handleAddFormButton = () => {
     let selectFormObject = {
         id:uuidv4(),
@@ -35,8 +41,8 @@ const handleAddFormButton = () => {
        <div className='flex flex-col gap-1 items-start m-4'>
         <Label>Add Options</Label>
         <Container>
-            <InputBox onChange={(e) => setAddOption(e.target.value)} required value={addOption}></InputBox>
-            <Button onClick={() => setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption}])}>Add a Option</Button>
+            <InputBox onChange={(e) => setAddOption(e.target.value)} value={addOption} required/>
+            <Button onClick={handleAddOptionList}>Add a Option</Button>
         </Container>
             <ul className='ml-7'>
                 {addOptionList.map((each) => 
