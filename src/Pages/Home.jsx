@@ -45,7 +45,7 @@ const Home = () => {
       </div>
 
       <div>
-        <Button onClick={googleAuthLogout}>Logout</Button>
+        <Button className="bg-red-500" onClick={googleAuthLogout}>Logout</Button>
       </div>
     </div>
   )
