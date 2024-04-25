@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, InputBox, Label, Container, StyledListItem } from '../StyledComponents/FormElements'
 import { addForm } from '../Store/Slices/finalFormSlice'
@@ -10,7 +10,7 @@ const AddForm = () => {
 
     // Local State
     const [labelName, setLabelName] = useState("")
-    const [addOption, setAddOption] = useState("")
+    const addOption = useRef("")
     const [addOptionList, setAddOptionList] = useState([]) 
     const [messageOptionName, setMessageOptionName] = useState(false)
     const [messageLabelName, setMessageLabelName] = useState(false)
@@ -23,8 +23,8 @@ const handleAddOptionList = () => {
     
     if (addOption){
         setMessageOptionName(false)
-        setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption}])
-        setAddOption("")
+        setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption.current.value}])
+        addOption.current.value = ""
     }
     else{
         setMessageOptionName(true)
@@ -47,9 +47,8 @@ const handleAddFormButton = () => {
             dispatch(selectForm(""))
         }  
         else{
-                
+     
         }
-        
     }
     else{
         setMessageLabelName(true)
@@ -57,17 +56,12 @@ const handleAddFormButton = () => {
 }
 
 
-const handleLabelNameChange = (e) => {
-
-    setAddOption(e.target.value)
-}
-
 
     const AddOption = () => (
        <div className='flex flex-col gap-1 items-start m-4'>
         <Label>Add Options</Label>
         <Container>
-            <InputBox type="text" onChange={handleLabelNameChange} value={addOption}/>
+            <InputBox ref={addOption} type="text" />
             <Button onClick={handleAddOptionList}>Add a Option</Button>
         </Container>
         
