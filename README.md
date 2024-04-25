@@ -12,7 +12,8 @@ Rough Drawing => Excalidraw
 2. Data Layer => Redux-Toolkit
 3. Styling => Tailwindcss, styled-components
 4. Bundler => react-vite
-5. Testing => jest
+5. Routing => react-router-dom
+6. Testing => jest
 
 ## Featres
 1. Form Validation
@@ -20,6 +21,7 @@ Rough Drawing => Excalidraw
 ## Third Party Packages
 1. tailwindcss
 2. styeled-components
+3. react-router-dom
 
 
 ## Hosting
@@ -27,6 +29,9 @@ Netlify : [Dynamic React Form](https://praveen-dynamic-react-form.netlify.app/)
 
 ## Industry Standards
 Don't write above100 lines of code.
+
+## Firebas Authentication
+1. `npm install firebase`
 
 ## Folder Structure
 * src
@@ -51,7 +56,6 @@ Don't write above100 lines of code.
             - selectFormSlice.js
     * StyledComponents
         - FormElements        
-
 
 
 ## Reference Website

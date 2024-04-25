@@ -1,33 +1,32 @@
-import React from 'react'
-import Dropdown from './Components/Dropdown'
-import AddForm from './Components/AddForm'
-import { useSelector } from 'react-redux'
-import DynamicForm from './Components/DynamicForm'
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter, Route, Routes} from 'react-router-dom';
+import { auth } from './Authentication/firebase';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
 
 const App = () => {
-  const selectedForm = useSelector((store) => store.selectForm.selectedForm)
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Global State 
-  const checkConsole = useSelector((state) => state.checkConsole)
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
 
   return (
-    <div className='m-5'>
-      <div>
-      <h1 className='text-4xl text-center text-cyan-500 font-bold mt-8 mb-4'>React Dynamic Forms</h1>
-      <Dropdown/>
-      {selectedForm != "" && <AddForm/>}
-      </div>
-    <hr className='mt-4'/>
-      <div>
-        <DynamicForm/>
-      </div>
-      
-      <div>
-        {checkConsole && <h1 className="text-red-500 font-bold">Check Console for Form Data</h1>}
-        
-      </div>
-    </div>
-  )
-}
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ isAuthenticated ? <Home /> : <Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
