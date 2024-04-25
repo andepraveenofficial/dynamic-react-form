@@ -21,7 +21,7 @@ const AddForm = () => {
     // Methods 
 const handleAddOptionList = () => {
     
-    if (addOption === ""){
+    if (addOption){
         setMessageOptionName(false)
         setAddOptionList([...addOptionList, {id:uuidv4(), option:addOption}])
         setAddOption("")
@@ -30,7 +30,6 @@ const handleAddOptionList = () => {
         setMessageOptionName(true)
     }
 }
-
 
 const handleAddFormButton = () => {
     if (labelName){
