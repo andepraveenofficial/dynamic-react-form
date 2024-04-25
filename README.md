@@ -55,7 +55,10 @@ Don't write above100 lines of code.
             - finalFormSlice.js
             - selectFormSlice.js
     * StyledComponents
-        - FormElements        
+        - FormElements   
+    * Authentication
+        - firebase.js
+        - useGoogleAuth.js         
 
 
 ## Reference Website

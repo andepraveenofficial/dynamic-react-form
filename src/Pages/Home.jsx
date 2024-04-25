@@ -29,13 +29,21 @@ const Home = () => {
 }
 
   return (
-    <div className='m-5'>
-      <div>
-      <h1 className='text-4xl text-center text-cyan-500 font-bold mt-8 mb-4'>React Dynamic Forms</h1>
-      <Dropdown/>
-      {selectedForm != "" && <AddForm/>}
+    <div className='m-5 flex flex-row justify-around'>
+
+      <div className='flex flex-col gap-4'>
+        <h1 className='text-4xl text-center text-cyan-500 font-bold mt-8 mb-4'>React Dynamic Forms</h1>
+        <Dropdown/>
+        {selectedForm != "" && <AddForm/>}
+
+        <div>
+          <Button style={{backgroundColor:"red"}} onClick={googleAuthLogout}>Logout</Button>
+        </div>
       </div>
-    <hr className='mt-4'/>
+   
+
+    <div className='shadow-lg border'>
+    
       <div>
         <DynamicForm/>
       </div>
@@ -44,8 +52,8 @@ const Home = () => {
         {checkConsole && <h1 className="text-red-500 font-bold">Check Console for Form Data</h1>}
       </div>
 
-      <div>
-        <Button className="bg-red-500" onClick={googleAuthLogout}>Logout</Button>
+ 
+
       </div>
     </div>
   )

@@ -55,8 +55,6 @@ const handleAddFormButton = () => {
     }
 }
 
-
-
     const AddOption = () => (
        <div className='flex flex-col gap-1 items-start m-4'>
         <Label>Add Options</Label>
