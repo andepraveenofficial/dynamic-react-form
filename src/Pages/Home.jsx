@@ -42,7 +42,7 @@ const Home = () => {
       </div>
    
 
-    <div className='shadow-lg border'>
+    <div className='shadow-lg rounded'>
     
       <div>
         <DynamicForm/>

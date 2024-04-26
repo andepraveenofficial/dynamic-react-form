@@ -77,7 +77,7 @@ const handleSubmitButton = (event) => {
 }
 
   return (
-    <div className='m-3'>
+    <div>
       <form onSubmit={handleSubmitButton} className='flex flex-col gap-4'>
       {finalFormList.map((each) => {
         

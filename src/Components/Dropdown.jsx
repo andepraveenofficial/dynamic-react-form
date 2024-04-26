@@ -6,7 +6,7 @@ const Dropdown = () => {
     const dispatch = useDispatch()
   return (
     <div className="mt-4">
-    <select className='text-lg w-1/3 border rounded p-3 m-2 bg-gray-100 focus:outline-none focus:border-cyan-500' onChange={(e)=>{dispatch(selectForm(e.target.value))}}>
+    <select className='text-lg w-1/2 border rounded p-3 m-2 bg-gray-100 focus:outline-none focus:border-cyan-500' onChange={(e)=>{dispatch(selectForm(e.target.value))}}>
       <option value={""} defaultValue>Select Form Type</option>
       <option value="text">Text</option>
       <option value="number">Number</option>
