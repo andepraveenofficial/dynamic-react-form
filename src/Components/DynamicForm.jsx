@@ -31,7 +31,7 @@ const handleSubmitButton = (event) => {
         type:type,
         value:value
       }
-
+      
       case "number":
       return {
         id:id,

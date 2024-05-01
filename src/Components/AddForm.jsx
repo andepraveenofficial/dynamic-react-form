@@ -46,9 +46,7 @@ const handleAddFormButton = () => {
             dispatch(addForm(selectFormObject))
             dispatch(selectForm(""))
         }  
-        else{
-     
-        }
+       
     }
     else{
         setMessageLabelName(true)
@@ -63,7 +61,7 @@ const handleAddFormButton = () => {
             <Button onClick={handleAddOptionList}>Add a Option</Button>
         </Container>
         
-        {messageOptionName && <p class="text-red-500 font-bold">Option Name Cannot be blank</p>}
+        {messageOptionName && <p className="text-red-500 font-bold">Option Name Cannot be blank</p>}
         
             <ul className='ml-7'>
                 {addOptionList.map((each) => 

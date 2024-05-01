@@ -13,10 +13,12 @@ import { signOut } from 'firebase/auth'
 import { auth } from '../Authentication/firebase'
 
 const Home = () => {
-  const selectedForm = useSelector((store) => store.selectForm.selectedForm)
-
+  
   // Global State 
+  const selectedForm = useSelector((store) => store.selectForm.selectedForm)
   const checkConsole = useSelector((state) => state.checkConsole)
+  const finalForm = useSelector((store) => store.finalForm)
+  console.log(finalForm)
 
   // Logout Handle
   const googleAuthLogout = () => {
@@ -29,7 +31,7 @@ const Home = () => {
 }
 
   return (
-    <div className='m-5 flex flex-row justify-around'>
+    <div className='m-5 flex flex-col md:flex-row justify-around'>
 
       <div className='flex flex-col gap-4'>
         <h1 className='text-4xl text-center text-cyan-500 font-bold mt-8 mb-4'>React Dynamic Forms</h1>
@@ -40,21 +42,20 @@ const Home = () => {
           <Button style={{backgroundColor:"red"}} onClick={googleAuthLogout}>Logout</Button>
         </div>
       </div>
+
    
-
-    <div className='shadow-lg rounded'>
+      {finalForm.length !== 0 &&   <div className='shadow-lg rounded p-4'>
     
-      <div>
-        <DynamicForm/>
-      </div>
-      
-      <div>
-        {checkConsole && <h1 className="text-red-500 font-bold">Check Console for Form Data</h1>}
-      </div>
+    <div>
+      <DynamicForm/>
+    </div>
+    
+    <div>
+      {checkConsole && <h1 className="text-red-500 font-bold">Check Console for Form Data</h1>}
+    </div>
 
- 
-
-      </div>
+    </div>}
+  
     </div>
   )
 }
